@@ -1,0 +1,35 @@
+<template>
+  <div>
+      <lightning-button-group>
+          <lightning-button label="Agent" value="agent" onclick={handleClick}></lightning-button>
+          <lightning-button label="Policy Holder" value="policyHolder" onclick={handleClick}></lightning-button>
+          <lightning-button label="Life Insurance" value="lifeInsurance" onclick={handleClick}></lightning-button>
+          <lightning-button label="Motor Insurance" value="motorInsurance" onclick={handleClick}></lightning-button>
+      </lightning-button-group>
+
+      <template if:true={showAgentButtons}>
+          <lightning-button-group>
+              <lightning-button label="Add Agent"></lightning-button>
+              <lightning-button label="View Agent"></lightning-button>
+          </lightning-button-group>
+      </template>
+      <template if:true={showAddAgentForm}>
+        <lightning-record-edit-form object-api-name="Agent__c"  onsubmit={handleAgentSubmit} onsuccess={handleAgentSuccess}></lightning-record-edit-form>
+        <lightning-messages></lightning-messages>
+            <lightning-input-field field-name='Name'></lightning-input-field>
+            <lightning-input-field field-name='DOB__c'></lightning-input-field>
+            <lightning-input-field field-name='Gender__c'></lightning-input-field>
+            <lightning-input-field field-name='Phone__c'></lightning-input-field>
+            <lightning-input-field field-name='Email__c'></lightning-input-field>
+            <lightning-input-field field-name='Reg_Date__c'></lightning-input-field>
+            <lightning-input-field field-name='Address__c'></lightning-input-field>
+            <lightning-button-group>
+                <lightning-button variant="success" label="Save" title="Save" onclick={handleAgentSave} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="destructive" label="Cancle" title="Cancle" onclick={handleAgentCancle} class="slds-m-left_x-small"></lightning-button>
+              
+            </lightning-button-group>
+          </lightning-record-edit-form>
+    </template>
+    
+  </div>
+</template>

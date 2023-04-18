@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Get Related Contact">
+        <div style="width: auto;">
+                <lightning-datatable
+                    key-field="Id"
+                    data={dataCont}
+                    columns={columnCont}
+                    ></lightning-datatable>
+                 </div>
+    </lightning-card>
+
+    <lightning-card title="Get Related Opportunity">
+        <div style="width: auto;">
+                <lightning-datatable
+                    key-field="Id"
+                    data={dataOppty}
+                    columns={columnOppty}
+                    ></lightning-datatable>
+                 </div>
+    </lightning-card>
+
+</template>
