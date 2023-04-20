@@ -1,0 +1,55 @@
+<template>
+    <lightning-card title="CALCULATOR APP"></lightning-card>
+    <div class="c-container">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
+                <lightning-card  variant="Narrow"  title="Addition" icon-name="standard:account">
+                    
+                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber}></lightning-input>
+                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber}></lightning-input>
+                    
+                        <b>Output value is : </b>
+                            <P>{resultValue1}</p>
+                            </lightning-card>
+                
+                
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
+                <lightning-card  variant="Narrow"  title="Subtraction" icon-name="standard:account">
+                    
+                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber1}></lightning-input>
+                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber2}></lightning-input>
+                    
+                        <b>Output value is : </b>
+                            <P>{resultValue2}</p>
+                        </lightning-card>
+                
+                
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
+                <lightning-card  variant="Narrow"  title="Multiplication" icon-name="standard:account">
+                    
+                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber3}></lightning-input>
+                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber4}></lightning-input>
+                    
+                        <b>Output value is : </b>
+                            <P>{resultValue3}</p>
+                        
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size ="12" padding="around-small">
+                <lightning-card  variant="Narrow"  title="Division" icon-name="standard:account">
+                    
+                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber5}></lightning-input>
+                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber6}></lightning-input>
+                    
+                        <b>Output value is : </b>
+                            <P>{resultValue4}</p>
+                        
+                    
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    
+    </template>
