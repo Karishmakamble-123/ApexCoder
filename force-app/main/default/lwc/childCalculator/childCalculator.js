@@ -1,42 +1,58 @@
-
-import { LightningElement,api,track} from 'lwc';
+import { LightningElement } from 'lwc';
 
 export default class ChildCalculator extends LightningElement {
 
-    @track firstNumber;
-    @track secondNumber;
-     resultValue1;
-     resultValue2;
-     resultValue3;
-     resultValue4;
-    
+title = "Welcome to Lightning Web Components!";
+  isShowSub=false;
+  isShowAdd=false;
+  isShowMul=false;
+  isShowDiv=false;
 
+  showFeatures = true;
 
-     handleClickone(event){
-      this.firstNumber = parseInt(event.target.value);
+  /**
+   * Getter for the features property
+   */
+  get features() {
+    return [
+      {
+        label: "Learn in the browser.",
+        icon: "utility:edit",
+      },
+      {
+        label: "View changes to code instantly with Live Compilation.",
+        icon: "utility:refresh",
+      },
+      {
+        label: "Style your components with SLDS.",
+        icon: "utility:brush",
+      },
+    ];
   }
-  handleClicktwo(event){
-      this.secondNumber = parseInt(event.target.value);
-      
+
+  add(){
+  this.isShowAdd=true;
+  this.isShowSub=false;
+  this.isShowMul=false;
+  this.isShowDiv=false;
   }
-  @api
-  addition(){
-    
-    this.resultValue1 = this.firstNumber +  this.secondNumber;
+  sub(){
+  this.isShowAdd=false;
+  this.isShowSub=true;
+  this.isShowMul=false;
+  this.isShowDiv=false;
   }
-  @api
-  subtraction() {
-    this.resultValue2 = this.firstNumber - this.secondNumber;
+  mul(){
+  this.isShowAdd=false;
+  this.isShowSub=false;
+  this.isShowMul=true;
+  this.isShowDiv=false;
   }
-  @api
-  multiplication(){
-  this.resultValue3 = this.firstNumber * this.secondNumber;
+  div(){
+    this.isShowAdd=false;
+    this.isShowSub=false;
+    this.isShowMul=false;
+    this.isShowDiv=true; 
   }
-  @api
-  division() {
-  this.resultValue4 = this.firstNumber / this.secondNumber;
 }
-}
-
-
-
+   

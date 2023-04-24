@@ -1,55 +1,44 @@
 <template>
-    <lightning-card title="CALCULATOR APP"></lightning-card>
-    <div class="c-container">
-        <lightning-layout multiple-rows>
-            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
-                <lightning-card  variant="Narrow"  title="Addition" icon-name="standard:account">
-                    
-                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber}></lightning-input>
-                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber}></lightning-input>
-                    
-                        <b>Output value is : </b>
-                            <P>{resultValue1}</p>
-                            </lightning-card>
-                
-                
-            </lightning-layout-item>
-            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
-                <lightning-card  variant="Narrow"  title="Subtraction" icon-name="standard:account">
-                    
-                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber1}></lightning-input>
-                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber2}></lightning-input>
-                    
-                        <b>Output value is : </b>
-                            <P>{resultValue2}</p>
-                        </lightning-card>
-                
-                
-            </lightning-layout-item>
-            <lightning-layout-item flexibility="auto" size ="4" padding="around-small">
-                <lightning-card  variant="Narrow"  title="Multiplication" icon-name="standard:account">
-                    
-                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber3}></lightning-input>
-                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber4}></lightning-input>
-                    
-                        <b>Output value is : </b>
-                            <P>{resultValue3}</p>
-                        
-                </lightning-card>
-            </lightning-layout-item>
-            <lightning-layout-item flexibility="auto" size ="12" padding="around-small">
-                <lightning-card  variant="Narrow"  title="Division" icon-name="standard:account">
-                    
-                    <lightning-input type="number" name="input2" label="Number 1" onchange={handleClickone} value={firstNumber5}></lightning-input>
-                    <lightning-input type="number" name="input2" label="Number 2" onchange={handleClicktwo} value={secondNumber6}></lightning-input>
-                    
-                        <b>Output value is : </b>
-                            <P>{resultValue4}</p>
-                        
-                    
-                </lightning-card>
-            </lightning-layout-item>
-        </lightning-layout>
-    </div>
-    
-    </template>
+	<p>The layout items extend vertically to fill the container.</p>
+	<div class="c-container">
+		<lightning-layout vertical-align="space" multiple-rows="true" class="x-large">
+			<lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+				<lightning-card title="SHOW ADD">
+					<lightning-button label="ADD" slot="actions" onclick={add}></lightning-button>
+					<template if:true={isShowAdd}>
+						<c-add-the-number>ADD</c-add-the-number>
+					</template>
+					<p slot="footer">Card Footer</p>
+				</lightning-card>
+			</lightning-layout-item>
+			<lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+				<lightning-card title="SHOW SUB">
+					<lightning-button label="SUB" slot="actions" onclick={sub}></lightning-button>
+					<template if:true={isShowSub}>
+						<c-subtract-the-number>SUB</c-subtract-the-number>
+					</template>
+					<p slot="footer">Card Footer</p>
+				</lightning-card>
+			</lightning-layout-item>
+			<lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+				<lightning-card title="SHOW MUL">
+					<lightning-button label="MUL" slot="actions" onclick={mul}></lightning-button>
+					<template if:true={isShowMul}>
+						<c-multiplication-of-the-no>MUL</c-multiplication-of-the-no>
+					</template>
+
+					<p slot="footer">Card Footer</p>
+				</lightning-card>
+			</lightning-layout-item>
+			<lightning-layout-item flexibility="auto" padding="around-small" class="custom-box">
+				<lightning-card title="SHOW DIV">
+					<lightning-button label="DIV" slot="actions" onclick={div}></lightning-button>
+					<template if:true={isShowDiv}>
+						<c-division-of-number>DIV</c-division-of-number>
+					</template>
+					<p slot="footer">Card Footer</p>
+				</lightning-card>
+			</lightning-layout-item>
+		</lightning-layout>
+	</div>
+</template>

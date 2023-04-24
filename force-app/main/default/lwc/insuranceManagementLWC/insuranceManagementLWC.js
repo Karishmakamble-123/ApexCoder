@@ -1,5 +1,6 @@
 import { LightningElement,track, api} from 'lwc';
 
+
 export default class InsuranceManagementLWC extends LightningElement {
 
     
@@ -12,6 +13,8 @@ export default class InsuranceManagementLWC extends LightningElement {
   @track showAddAgentForm = false;
   @track showViewAgentForm= false;
   @track agentRecordId;
+  @api recordId;
+  
 
   handleAgentClick() {
     this.isShowAgent = true;
@@ -55,9 +58,11 @@ export default class InsuranceManagementLWC extends LightningElement {
    
   }
   
-  handleViewAgentClick() {
+  handleViewAgentClick(event) {
     this.showViewAgentForm = true;
     this.showAddAgentForm = false;
+
+   
   }
   handleAgentCancel() {
     this.showViewAgentForm = true;
@@ -68,11 +73,23 @@ export default class InsuranceManagementLWC extends LightningElement {
     const fields = event.detail.fields;
     this.template.querySelector('lightning-record-edit-form').submit(fields);
   }
+  handleAgentViewSubmit(event){
+    this.showViewAgentForm = true;
+    this.showAddAgentForm = false;
+
+
+  this.template.querySelector('lightning-record-edit-form').submit();
+
+  }
   
   handleAgentSuccess(event) {
     this.agentRecordId = event.detail.id;
     this.showViewAgentForm = true;
     this.showAddAgentForm = false;
+  }
+  handleAgentViewSuccess(event){
+    this.showViewForm = false;
+
   }
 
 
@@ -84,14 +101,7 @@ export default class InsuranceManagementLWC extends LightningElement {
   handleAgentCancel() {
     this.showAddAgentForm = false;
 }
-
-
- handleAgentSuccess(event) {
-    this.showAddAgentForm = false;
-    this.showViewAgentForm = true;
-    this.agentRecordId = event.detail.id;
-   
-  }
-
- 
+handleAgentView() {
+    this.showViewForm = true;
+}
 }
