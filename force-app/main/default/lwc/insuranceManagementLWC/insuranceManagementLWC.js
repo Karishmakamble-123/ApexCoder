@@ -1,8 +1,9 @@
 import { LightningElement,track, api} from 'lwc';
-
+import getPolicyHolderList from '@salesforce/apex/policyHolderController.getPolicyHolderList';
 
 export default class InsuranceManagementLWC extends LightningElement {
-
+  searchKey;
+  @track policyholder;
     
   @track isShowAgent = false;
   @track isShowPolicyHolder = false;
@@ -12,9 +13,36 @@ export default class InsuranceManagementLWC extends LightningElement {
   @track showAgentButtons = false;
   @track showAddAgentForm = false;
   @track showViewAgentForm= false;
+  @track showPolicyHolderTable = false;
   @track agentRecordId;
   @api recordId;
   
+  
+
+  //This Funcation will get the value from Text Input.
+  handelSearchKey(event){
+    this.searchKey = event.target.value;
+}
+
+
+
+SearchPHHandler(){
+    //call Apex method.
+    getPolicyHolderList({textkey: this.searchKey})
+    .then(result => {
+            this.policyholder = result;
+    })
+    .catch( error=>{
+        this.policyholder = null;
+    });
+
+}
+cols = [
+    {label:'PH ID', fieldName:'PH_ID__c' , type:'Auto Number'} ,
+    {label:'Policy Type', fieldName:'Policy_Type__c' , type:'Picklist'} ,
+    {label:'Premium Amount', fieldName:'Premium_Amount__c' , type:'Currency'},
+    {label:'Due Date', fieldName:'Due_Date__c' , type:'Date'}     
+]
 
   handleAgentClick() {
     this.isShowAgent = true;
@@ -33,6 +61,7 @@ export default class InsuranceManagementLWC extends LightningElement {
     this.isShowLifeInsurance = false;
     this.isShowMotorInsurance = false;
     this.showAgentButtons = false;
+    this.showPolicyHolderTable = true;
   }
 
   handleLifeInsuranceClick() {

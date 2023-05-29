@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+        <lightning-button label="Get 10 Contact Records" title="Non-primary action" onclick={handleClick} class="slds-var-m-left_x-small"></lightning-button>
+        <template if:true={contacts}>
+            <lightning-datatable
+                key-field="Id"
+                data={contacts}
+                columns={columns}
+                max-row-selection="1"
+            >
+           </lightning-datatable>
+        </template>
+
+    </lightning-card>
+</template>

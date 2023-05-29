@@ -1,0 +1,12 @@
+<template>
+	<lightning-card>
+	<div class="slds-m-horizontal_xx-small slds-m-bottom_x-small">
+		<slot name="icon"></slot> 
+        <span class="slds-p-left_small">Parent Container</span>
+	</div>
+	<c-acc-cont-comp oncontactcreated={contactCreatedParent}></c-acc-cont-comp>
+	<template if:true={contactName}>
+		<p>SHOW Contact Name Here!!!!! {contactName}</p>
+	</template>
+</lightning-card>
+</template>

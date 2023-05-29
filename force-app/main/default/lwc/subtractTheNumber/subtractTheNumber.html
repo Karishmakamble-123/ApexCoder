@@ -1,0 +1,16 @@
+<template>  
+    <lightning-card  title="Subtraction" icon-name="standard:formula">
+    <div class="slds-box slds-theme_shade">  
+     <lightning-input type="number" name="input2" label="Number 1" onchange={handleNumberOne} value={firstNumber}></lightning-input>  
+     <lightning-input type="number" name="input2" label="Number 2" onchange={handleNumberTwo} value={secondNumber}></lightning-input>  
+   </div>  
+   <div class="slds-box slds-theme_shade">  
+     <b>Output value is : </b>  
+      <P>{resultValue}</p>  
+   </div>  
+    <div class="slds-box slds-theme_shade">  
+      <lightning-button variant="brand" label="Subtraction" title="Subtraction" onclick={subtraction} class="slds-m-left_x-small"></lightning-button> 
+      
+    </div>  
+</lightning-card>
+ </template>
