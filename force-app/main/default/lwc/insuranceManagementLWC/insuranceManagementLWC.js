@@ -1,10 +1,22 @@
 import { LightningElement,track, api} from 'lwc';
 import getPolicyHolderList from '@salesforce/apex/policyHolderController.getPolicyHolderList';
+import generateData from './generateData';
 
+const columns = [
+    { label: 'Label', fieldName: 'name' },
+    { label: 'Website', fieldName: 'website', type: 'url' },
+    { label: 'Phone', fieldName: 'phone', type: 'phone' },
+    { label: 'Balance', fieldName: 'amount', type: 'currency' },
+    { label: 'CloseAt', fieldName: 'closeAt', type: 'date' },
+];
 export default class InsuranceManagementLWC extends LightningElement {
+  data = [];
+  columns = columns;
   searchKey;
   @track policyholder;
-    
+  @track agent;
+  @track lifeInsurance;
+  @track payment;
   @track isShowAgent = false;
   @track isShowPolicyHolder = false;
   @track isShowLifeInsurance = false;
@@ -43,6 +55,10 @@ cols = [
     {label:'Premium Amount', fieldName:'Premium_Amount__c' , type:'Currency'},
     {label:'Due Date', fieldName:'Due_Date__c' , type:'Date'}     
 ]
+connectedCallback() {
+  const data = generateData({ amountOfRecords: 100 });
+  this.data = data;
+}
 
   handleAgentClick() {
     this.isShowAgent = true;
@@ -129,8 +145,11 @@ cols = [
 
   handleAgentCancel() {
     this.showAddAgentForm = false;
+    this.showViewAgentForm = true;
 }
 handleAgentView() {
     this.showViewForm = true;
+    this.showViewAgentForm = false;
+    
 }
 }
